@@ -1,0 +1,50 @@
+<== Terraform installation on RHEL 8 EC2 ==>
+
+[ec20user@ip-10-2-0-199 ~]#sudo su -
+[root@ip-10-2-0-199 ~]# yum update -y
+[root@ip-10-2-0-199 ~]# yum install wget -y
+[root@ip-10-2-0-199 ~]# wget -q https://releases.hashicorp.com/terraform/0.12.9/terraform_0.12.9_linux_amd64.zip
+[root@ip-10-2-0-199 ~]# ls -lrth
+[root@ip-10-2-0-199 ~]# yum install unzip -y
+[root@ip-10-2-0-199 ~]# unzip -o terraform_0.12.9_linux_amd64.zip -d /usr/local/bin 
+(Here -o = option, -d = directory and unzipping under system path (Environment variable) so that terraform command can be executed from any path)
+[root@ip-10-2-0-199 ~]# rm terraform_0.12.9_linux_amd64.zip
+[root@ip-10-2-0-199 ~]# terraform --version
+
+[root@ip-10-2-0-199 ~]# yum install python3-pip -y
+## ls -larth
+## vi ~/.bash_profile ( add line --> export PATH=~/.local/bin:$PATH )
+[root@ip-10-2-0-199 ~]# pip3 install awscli --upgrade
+[root@ip-10-2-0-199 ~]# aws --version
+[root@ip-10-2-0-199 ~]# aws configure
+Enter following :-
+AWS Access Key ID [None]: *********************
+AWS Secret Access Key [None]: *********************
+Default region name [None]: us-east-1
+Default output format [None]: json
+[root@ip-10-2-0-199 ~]# ls -larth
+[root@ip-10-2-0-199 ~]# cd /opt
+[root@ip-10-2-0-199 ~]# cd .aws
+[root@ip-10-2-0-199 .aws]# ls -larth
+[root@ip-10-2-0-199 .aws]# cat credentials
+[default]
+aws_access_key_id = ************
+aws_secret_access_key = ***********
+
+[root@ip-10-2-0-199 opt]# yum install git -y
+[root@ip-10-2-0-199 opt]# git clone https://github.com/maheshkharwadkar/terraform-course.git
+[root@ip-10-2-0-199 opt]# ls -lrth
+[root@ip-10-2-0-199 opt]# cd terraform-course/
+[root@ip-10-2-0-199 terraform-course]# cd demo-1
+[root@ip-10-2-0-199 demo-1]# ls -lrth
+[root@ip-10-2-0-199 demo-1]# cd ..
+[root@ip-10-2-0-199 terraform-course]# git branch
+[root@ip-10-2-0-199 terraform-course]# git checkout terraform-0.12 (Here we created new branch)
+[root@ip-10-2-0-199 terraform-course]# git branch
+[root@ip-10-2-0-199 terraform-course]# cd demo-1
+
+
+
+
+
+
